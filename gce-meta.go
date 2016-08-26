@@ -35,6 +35,8 @@ func main() {
 
 	app := cli.NewApp()
 
+	app.Version = "0.0.1"
+
 	if len(os.Args) < 2 || len(os.Args) > 2 {
 		app.Action = func(c *cli.Context) error {
 			cli.ShowAppHelp(c)
