@@ -10,7 +10,7 @@ Example:
 	   gce-meta - Small and simple utility to get some metadata of project or instance on Google Cloud Engine.
 
 	USAGE:
-	   main [global options] command [command options] [arguments...]
+	   gce-meta [global options] command [command options] [arguments...]
 
 	VERSION:
 	   0.2
