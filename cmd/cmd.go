@@ -19,7 +19,7 @@ func (suffix NotDefinedError) Error() string {
 //	return val, err
 //}
 
-func Get(suffix string) (value, err error) {
+func Get(suffix string) (value string, err error) {
 	client := &http.Client{}
 	host := "169.254.169.254"
 	url := "http://" + host + "/computeMetadata/v1/" + suffix
