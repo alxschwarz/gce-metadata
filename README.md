@@ -32,7 +32,7 @@ Example:
 
 	   project:
 	     project-id, p           The project ID.
-	     numeric-project-id, np  The numeric project ID of the instance, which is not the same as the project name visible in the Google Cloud Platform Console.
+	     numeric-project-id, np  The numeric project ID of the instance.
 
 	GLOBAL OPTIONS:
 	   --help, -h     show help

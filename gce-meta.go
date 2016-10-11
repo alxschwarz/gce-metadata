@@ -40,7 +40,7 @@ func main() {
 		{
 			Name:     "numeric-project-id",
 			Aliases:  []string{"np"},
-			Usage:    "The numeric project ID of the instance, which is not the same as the project name visible in the Google Cloud Platform Console.",
+			Usage:    "The numeric project ID of the instance.",
 			Category: "project",
 			Action: func(c *cli.Context) error {
 				id, err := cmd.NumericProjectID()
