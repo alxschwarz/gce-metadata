@@ -15,27 +15,14 @@ func (suffix NotDefinedError) Error() string {
 	return fmt.Sprintf("metadata: GCE metadata %q not defined", string(suffix))
 }
 
-func Get(suffix string) (string, error) {
-	val, _, err := getETag(suffix)
-	return val, err
-}
+//func Get(suffix string) (string, error) {
+//	val, _, err := getETag(suffix)
+//	return val, err
+//}
 
-func getETag(suffix string) (value, etag string, err error) {
-	// Using a fixed IP makes it very difficult to spoof the metadata service in
-	// a container, which is an important use-case for local testing of cloud
-	// deployments. To enable spoofing of the metadata service, the environment
-	// variable GCE_METADATA_HOST is first inspected to decide where metadata
-	// requests shall go.
+func Get(suffix string) (value, err error) {
 	client := &http.Client{}
-	host := os.Getenv("GCE_METADATA_HOST")
-	if host == "" {
-		// Using 169.254.169.254 instead of "metadata" here because Go
-		// binaries built with the "netgo" tag and without cgo won't
-		// know the search suffix for "metadata" is
-		// ".google.internal", and this IP address is documented as
-		// being stable anyway.
-		host = "169.254.169.254"
-	}
+	host = "169.254.169.254"
 	url := "http://" + host + "/computeMetadata/v1/" + suffix
 	req, _ := http.NewRequest("GET", url, nil)
 	req.Header.Set("Metadata-Flavor", "Google")
@@ -54,7 +41,7 @@ func getETag(suffix string) (value, etag string, err error) {
 	if err != nil {
 		return "", "", err
 	}
-	return string(all), res.Header.Get("Etag"), nil
+	return string(all), nil
 }
 
 func getTrimmed(suffix string) (s string, err error) {
