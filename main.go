@@ -1,8 +1,8 @@
 package main
 
 import (
+	"bitbucket.org/alxschwarz/gce-meta/cmd"
 	"fmt"
-	"github.com/alexfinn/gce-meta/cmd"
 	"gopkg.in/urfave/cli.v1"
 )
 
