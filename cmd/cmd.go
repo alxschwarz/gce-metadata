@@ -5,7 +5,6 @@ import (
 	"fmt"
 	"io/ioutil"
 	"net/http"
-	"os"
 	"strings"
 )
 
@@ -22,24 +21,24 @@ func (suffix NotDefinedError) Error() string {
 
 func Get(suffix string) (value, err error) {
 	client := &http.Client{}
-	host = "169.254.169.254"
+	host := "169.254.169.254"
 	url := "http://" + host + "/computeMetadata/v1/" + suffix
 	req, _ := http.NewRequest("GET", url, nil)
 	req.Header.Set("Metadata-Flavor", "Google")
 	res, err := client.Do(req)
 	if err != nil {
-		return "", "", err
+		return "", err
 	}
 	defer res.Body.Close()
 	if res.StatusCode == http.StatusNotFound {
-		return "", "", NotDefinedError(suffix)
+		return "", NotDefinedError(suffix)
 	}
 	if res.StatusCode != 200 {
-		return "", "", fmt.Errorf("status code %d trying to fetch %s", res.StatusCode, url)
+		return "", fmt.Errorf("status code %d trying to fetch %s", res.StatusCode, url)
 	}
 	all, err := ioutil.ReadAll(res.Body)
 	if err != nil {
-		return "", "", err
+		return "", err
 	}
 	return string(all), nil
 }
