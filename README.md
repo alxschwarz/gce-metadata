@@ -1,16 +1,16 @@
-## gce-meta
+## gce-metadata
 
 Small and very simple utility to get some metadata for instance on Google Cloud Engine.
 
 Example:
 
-	→ gce-meta
+	→ gce-metadata
 
 	NAME:
-	   gce-meta - Small and simple utility to get some metadata of project or instance on Google Cloud Engine.
+	   gce-metadata - Small and simple utility to get some metadata of project or instance on Google Cloud Engine.
 
 	USAGE:
-	   gce-meta [global options] command [command options] [arguments...]
+	   gce-metadata [global options] command [command options] [arguments...]
 
 	VERSION:
 	   0.2
